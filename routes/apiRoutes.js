@@ -15,18 +15,23 @@ module.exports = function(app) {
     });
 
     app.post("/api/notes", function(req, res) {
-        fs.readFile(__dirname + "/../db/db.json", "utf8", function(error, data) {
-            var dataArray = JSON.parse(data);
-            dataArray.push(req.body)
-            console.log(req.body);
+
+        var newNote = req.body
+        newNote.id = Date.now()
+
+
+             var dataArray = JSON.parse(fs.readFileSync(__dirname + "/../db/db.json"));
+             dataArray.push(newNote)
+             console.log(dataArray);
+        //     console.log(req.body);
             fs.writeFile(__dirname + "/../db/db.json", JSON.stringify(dataArray), function(error) {
                 if (error) {
                     return console.log(error);
                 }
-                res.json(dataArray);
+                res.json(newNote);
             })
-        });
     });
+    
 
     
 
