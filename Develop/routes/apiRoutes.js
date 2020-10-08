@@ -1,5 +1,7 @@
 var fs = require("fs");
 
+var dataBase = require("../db/db.json");
+
 module.exports = function(app) {
     app.get("/api/notes", function(req, res) {
         fs.readFile(__dirname + "/../db/db.json", "utf8", function(error, data) {
