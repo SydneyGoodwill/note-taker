@@ -2,6 +2,10 @@ var fs = require("fs");
 
 var dataBase = require("../db/db.json");
 
+function dataArray() {
+   return JSON.parse(fs.readFileSync(__dirname + "/../db/db.json"));
+}
+
 module.exports = function(app) {
     app.get("/api/notes", function(req, res) {
         fs.readFile(__dirname + "/../db/db.json", "utf8", function(error, data) {
@@ -22,6 +26,7 @@ module.exports = function(app) {
 
              var dataArray = JSON.parse(fs.readFileSync(__dirname + "/../db/db.json"));
              dataArray.push(newNote)
+
              console.log(dataArray);
         //     console.log(req.body);
             fs.writeFile(__dirname + "/../db/db.json", JSON.stringify(dataArray), function(error) {
@@ -36,15 +41,22 @@ module.exports = function(app) {
     
 
     app.delete("/api/notes/:id", function(req, res) {
-        fs.readFile(__dirname + "/../db/db.json", "utf8", function(error, data) {
-            if (error) {
-                return console.log(error);
-            }
+        var id = (req.params.id)
+        var deletedData = dataArray().filter(element => element.id !=id)
 
-            fs.unlink(__dirname + "/../db/db.json", function(error) {
-                if(error) return console.log(error);
-                console.log("File deleted successfully");
-            })
-        });
+        fs.writeFileSync(__dirname + "/../db/db.json", JSON.stringify(deletedData));
+
+        res.json(deletedData);
+
+        // fs.readFile(__dirname + "/../db/db.json", "utf8", function(error, data) {
+        //     if (error) {
+        //         return console.log(error);
+        //     }
+
+        //     fs.unlink(__dirname + "/../db/db.json", function(error) {
+        //         if(error) return console.log(error);
+        //         console.log("File deleted successfully");
+        //     })
+        // });
     })
 }
