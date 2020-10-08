@@ -25,7 +25,7 @@
   To install this application you will need access to GitHub and a code editor, such as VS Code. You will copy or clone down the code from this repo, so that you will be able to work with it on your local machine. Once you have your code present in the code editor, and your terminal open to the correct working path, you should be able to run the included files in a node environment. 
 
   ## Usage
-  If you wish ti experience the front-end of the is app, please visit the provided Project Link to interact with a live version. If you are interested in its back-end functionality, you will first need to make sure you have the correct dependencies installed. Make sure you are on the correct working path in your terminal, and run the command "npm install". This should install the dependencies, body-parser and express. For this app, you really only need to make use of express. Now you can interact with the backend! Simply run the command "node server.js" or "nodemon server.js".
+  If you wish to experience the front-end of this app, please visit the provided Project Link to interact with a live version. If you are interested in its back-end functionality, you will first need to make sure you have the correct dependencies installed. Make sure you are on the correct working path in your terminal, and run the command "npm install". This should install the dependencies, body-parser and express. For this app, you really only need to make use of express. Now you can interact with the backend! Simply run the command "node server.js" or "nodemon server.js".
 
   ## Contributors
   Sydney Goodwill, with the help of Luis Miguel Rodriguez, and Nik Lenning
